@@ -12,6 +12,7 @@ install_dir = ""
 
 
 def installpackage(install):
+        print("Installing VSCode in {}".format(install))
         if os.path.isdir(install):
              pass
         else:
@@ -20,12 +21,16 @@ def installpackage(install):
         package = ZipFile("Update.zip","r")
         package.extractall(path=install)
         package.close()
+        os.remove("Update.zip")
 
 
 
 
-def main():     
-    wget.download(VSCodeURL,out="Update.zip")   
+def main():
+    print("VSCodeAutoUpdater by Hawk2811")
+    print("Downloading Latest VSCode version at code.visualstudio.com")
+    wget.download(VSCodeURL,out="Update.zip")
+    print("\nReading configuration file {}".format(config_file))
     if os.path.exists(config_file):
         file = open(config_file,"r")
         install_dir = file.read()
